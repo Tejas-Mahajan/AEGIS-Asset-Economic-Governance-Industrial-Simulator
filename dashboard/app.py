@@ -164,8 +164,8 @@ else:
     )
 
 # Navigation Tabs for Views
-tab_health, tab_ranking, tab_risk, tab_scope = st.tabs(
-    ["🏥 Asset Health View", "📊 Priority Ranking (AHP)", "💰 Risk & Budget Allocation (CVaR)", "📋 Scope & Architecture"]
+tab_health, tab_ranking, tab_risk = st.tabs(
+    ["🏥 Asset Health View", "📊 Priority Ranking (AHP)", "💰 Risk & Budget Allocation (CVaR)"]
 )
 
 # VIEW 1: ASSET HEALTH VIEW
@@ -264,27 +264,3 @@ with tab_risk:
         }
     ).set_index("Asset ID")
     st.bar_chart(chart_data)
-
-# VIEW 4: SCOPE & ARCHITECTURE (D7)
-with tab_scope:
-    st.subheader("Project Plan — In-Scope vs Out-of-Scope (D7)")
-    col_in, col_out = st.columns(2)
-    with col_in:
-        st.success("### ✅ In-Scope (Implemented Prototype)")
-        st.markdown(
-            """
-            - **Data Simulation**: NASA C-MAPSS FD001 dataset generator, noise injection, and Event API.
-            - **Predictive Analytics**: Gradient Boosting RUL prediction with dynamic confidence bounds.
-            - **Economic Governance**: AHP 3-factor ranking, Consistency Ratio < 0.1, CVaR 95% risk exposure, and budget allocation.
-            - **Dashboard & Integration**: Interactive Streamlit app with event injection ripple.
-            """
-        )
-    with col_out:
-        st.warning("### 🚫 Out-of-Scope (Future Expansion)")
-        st.markdown(
-            """
-            - Sentiment shift NLP analysis.
-            - Multi-fleet enterprise cloud streaming integration.
-            - Automated SAP/ERP work order dispatch API.
-            """
-        )
